@@ -10,7 +10,7 @@ services:
         uid: ${IMAGE_UID}
         gid: ${IMAGE_GID}
     hostname: controller
-    domain: ${IMAGE_DNS_SEARCH_DOMAIN}
+    domainname: ${IMAGE_DNS_SEARCH_DOMAIN}
     volumes:
       - home:/home/${IMAGE_USERNAME}
     ports:
