@@ -13,6 +13,7 @@ services:
     domainname: ${IMAGE_DNS_SEARCH_DOMAIN}
     volumes:
       - home:/home/${IMAGE_USERNAME}
+      - etc_ssh:/etc/ssh
     ports:
       - "2222:22"
     networks:
@@ -29,3 +30,4 @@ networks:
 
 volumes:
   home:
+  etc_ssh:

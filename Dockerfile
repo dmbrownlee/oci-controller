@@ -55,7 +55,6 @@ RUN apk add --no-cache \
 COPY --chmod=755 entrypoint.sh /sbin/entrypoint.sh
 
 RUN ln -s /usr/bin/tofu /usr/local/bin/terraform \
-  && /usr/bin/ssh-keygen -A \
   && /usr/sbin/groupadd -g ${gid} ${username} \
   && /usr/sbin/useradd -m -d /home/${username} -g ${username} -G wheel -s /bin/bash -u ${uid} ${username} \
   && /bin/echo "${username} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/99${username}
@@ -63,7 +62,7 @@ RUN ln -s /usr/bin/tofu /usr/local/bin/terraform \
 
 USER ${username}
 
-VOLUME ["/home/${username}"]
+VOLUME ["/home/${username}","/etc/ssh"]
 WORKDIR /home/${username}
 
 EXPOSE 22
