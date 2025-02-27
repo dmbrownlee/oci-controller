@@ -1,0 +1,31 @@
+---
+name: controller
+services:
+  controller:
+    image: dmbrownlee/controller:latest
+    build:
+      context: .
+      args:
+        username: ${IMAGE_USERNAME}
+        uid: ${IMAGE_UID}
+        gid: ${IMAGE_GID}
+    hostname: controller
+    domain: ${IMAGE_DNS_SEARCH_DOMAIN}
+    volumes:
+      - home:/home/${IMAGE_USERNAME}
+    ports:
+      - "2222:22"
+    networks:
+      - controller
+    dns:
+      - ${IMAGE_DNS_NAMESERVER}
+    dns_search:
+      - ${IMAGE_DNS_SEARCH_DOMAIN}
+    dns_opt:
+      - ndots:2
+
+networks:
+  controller:
+
+volumes:
+  home:

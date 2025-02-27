@@ -1,0 +1,7 @@
+.git
+.gitignore
+*.swp
+README.md
+compose.yaml
+Containerfile
+controller.env
