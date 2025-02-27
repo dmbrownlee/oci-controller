@@ -59,9 +59,6 @@ RUN ln -s /usr/bin/tofu /usr/local/bin/terraform \
   && /usr/sbin/useradd -m -d /home/${username} -g ${username} -G wheel -s /bin/bash -u ${uid} ${username} \
   && /bin/echo "${username} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/99${username}
 
-
-USER ${username}
-
 VOLUME ["/home/${username}","/etc/ssh"]
 WORKDIR /home/${username}
 
