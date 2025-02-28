@@ -14,6 +14,7 @@ RUN apk add --no-cache \
     bind-tools \
     ca-certificates \
     curl \
+    fd \
     g++ \
     gcc \
     git \
@@ -33,22 +34,25 @@ RUN apk add --no-cache \
     lazygit \
     linux-headers \
     lsb-release-minimal \
+    lua5.4 \
+    lua5.4-dev \
     mandoc \
     mtr \
     mtr-bash-completion \
     neovim \
-    nvim-lspconfig \
+    neovim-doc \
     openssh-client-common \
     openssh-client-default \
     openssh-keygen \
     openssh-server \
     opentofu \
+    ripgrep \
     rsync \
     shadow \
     sudo \
     tmux \
-    tmuxinator \
-    tmuxinator-bash-completion \
+#    tmuxinator \
+#    tmuxinator-bash-completion \
     yq \
     yq-go-bash-completion
 
