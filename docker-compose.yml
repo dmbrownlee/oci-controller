@@ -5,15 +5,10 @@ services:
     image: dmbrownlee/controller:latest
     build:
       context: .
-      args:
-        username: ${IMAGE_USERNAME}
-        uid: ${IMAGE_UID}
-        gid: ${IMAGE_GID}
     hostname: controller
     domainname: ${IMAGE_DNS_SEARCH_DOMAIN}
     volumes:
-      - home:/home/${IMAGE_USERNAME}
-      - home__ssh:/home/${IMAGE_USERNAME}/.ssh
+      - home:/home
       - etc_ssh:/etc/ssh
     ports:
       - "2222:22"
@@ -31,5 +26,4 @@ networks:
 
 volumes:
   home:
-  home__ssh:
   etc_ssh:

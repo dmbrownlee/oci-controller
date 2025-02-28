@@ -3,10 +3,6 @@
 ARG alpine_version=@sha256:a8560b36e8b8210634f77d9f7f9efd7ffa463e380b75e2e74aff4511df3ef88c
 FROM alpine${alpine_version}
 
-ARG username=user
-ARG uid=1000
-ARG gid=1000
-
 RUN apk add --no-cache \
     ansible \
     bash \
@@ -26,8 +22,6 @@ RUN apk add --no-cache \
     helm-bash-completion \
     iproute2 \
     jq \
-#    k9s \
-#    k9s-bash-completion \
     kubectl \
     kubectl-bash-completion \
     lazydocker \
@@ -51,20 +45,12 @@ RUN apk add --no-cache \
     shadow \
     sudo \
     tmux \
-#    tmuxinator \
-#    tmuxinator-bash-completion \
     yq \
     yq-go-bash-completion
 
 COPY --chmod=755 entrypoint.sh /sbin/entrypoint.sh
 
-RUN ln -s /usr/bin/tofu /usr/local/bin/terraform \
-  && /usr/sbin/groupadd -g ${gid} ${username} \
-  && /usr/sbin/useradd -m -d /home/${username} -g ${username} -G wheel -s /bin/bash -u ${uid} ${username} \
-  && /bin/echo "${username} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/99${username}
-
-VOLUME ["/home/${username}","/home/${username}/.ssh","/etc/ssh"]
-WORKDIR /home/${username}
+VOLUME ["/home","/etc/ssh"]
 
 EXPOSE 22
 
