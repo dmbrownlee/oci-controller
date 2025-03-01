@@ -8,7 +8,7 @@ fi
 # If ansible is installed and we are passed a playbook repo
 # at startup, pull and run it.
 if [ -x /usr/bin/ansible-pull -a -n "$ANSIBLE_PULL_OPTIONS" ]; then
-  /usr/bin/ansible-pull $ANSIBLE_PULL_OPTIONS
+  /usr/bin/ansible-pull $ANSIBLE_PULL_OPTIONS 2>/var/log/ansible-pull.stderr >/var/log/ansible-pull.stdout
 fi
 
 # Run sshd as the first process unless overridden on the CLI.
