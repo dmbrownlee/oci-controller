@@ -5,6 +5,9 @@ services:
     image: dmbrownlee/controller:latest
     build:
       context: .
+    environment:
+      ANSIBLE_PULL_OPTIONS: ${ANSIBLE_PULL_OPTIONS}
+      ANSIBLE_PULL_VARS_FILE_URL: ${ANSIBLE_PULL_VARS_FILE_URL}
     hostname: controller
     domainname: ${IMAGE_DNS_SEARCH_DOMAIN}
     volumes:
