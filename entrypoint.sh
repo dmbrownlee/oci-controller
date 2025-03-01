@@ -1,4 +1,5 @@
 #!/bin/sh
+env > /var/log/entrpoint.env
 
 # If OpenTofu is installed, create terraform symbolic link.
 if [ -e /usr/bin/tofu -a ! -e /usr/local/bin/terraform ]; then
@@ -14,6 +15,7 @@ fi
 # Run sshd as the first process unless overridden on the CLI.
 if [ "$1" = "default" ]; then
   # Generate an SSH host key if it does not exist
+  # Note: /etc/ssh is a mounted volume and may exist from a previous instantiation
   if [ ! -e /etc/ssh/ssh_host_ed25519_key ]; then
     /usr/bin/ssh-keygen -A
   fi
