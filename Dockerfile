@@ -40,6 +40,7 @@ RUN apk add --no-cache \
     openssh-keygen \
     openssh-server \
     opentofu \
+    py3-passlib \
     ripgrep \
     rsync \
     shadow \
