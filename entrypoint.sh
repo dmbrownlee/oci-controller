@@ -9,8 +9,12 @@ fi
 # If ansible is installed and we are passed a playbook repo
 # at startup, pull and run it.
 if [ -x /usr/bin/ansible-pull -a -n "$ANSIBLE_PULL_OPTIONS" ]; then
-  if [ -z "$ANSIBLE_PULL_VARS_FILE_URL" ]; then
+  if [ -n "$ANSIBLE_PULL_VARS_FILE_URL" ]; then
     /usr/bin/curl -o /root/ansible-pull.vars $ANSIBLE_PULL_VARS_FILE_URL
+  else
+    # Ensure the var file always exists so it can be reference in local.yml
+    # playbook without error, even if it is empty
+    touch /root/ansible-pull.vars
   fi
   /usr/bin/ansible-pull $ANSIBLE_PULL_OPTIONS 2>/var/log/ansible-pull.stderr >/var/log/ansible-pull.stdout
 fi
