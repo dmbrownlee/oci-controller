@@ -8,8 +8,6 @@ services:
     environment:
       ANSIBLE_PULL_OPTIONS: ${ANSIBLE_PULL_OPTIONS}
       ANSIBLE_PULL_VARS_FILE_URL: ${ANSIBLE_PULL_VARS_FILE_URL}
-    hostname: controller
-    domainname: ${IMAGE_DNS_SEARCH_DOMAIN}
     volumes:
       - home:/home
       - etc_ssh:/etc/ssh
@@ -17,12 +15,6 @@ services:
       - "2222:22"
     networks:
       - controller
-    dns:
-      - ${IMAGE_DNS_NAMESERVER}
-    dns_search:
-      - ${IMAGE_DNS_SEARCH_DOMAIN}
-    dns_opt:
-      - ndots:2
 
 networks:
   controller:

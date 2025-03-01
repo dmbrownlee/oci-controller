@@ -10,7 +10,7 @@ fi
 # at startup, pull and run it.
 if [ -x /usr/bin/ansible-pull -a -n "$ANSIBLE_PULL_OPTIONS" ]; then
   if [ -z "$ANSIBLE_PULL_VARS_FILE_URL" ]; then
-    curl -o /root/ansible-pull.vars $ANSIBLE_PULL_VARS_FILE_URL
+    /usr/bin/curl -o /root/ansible-pull.vars $ANSIBLE_PULL_VARS_FILE_URL
   fi
   /usr/bin/ansible-pull $ANSIBLE_PULL_OPTIONS 2>/var/log/ansible-pull.stderr >/var/log/ansible-pull.stdout
 fi
