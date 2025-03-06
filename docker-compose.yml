@@ -2,6 +2,7 @@
 name: controller
 services:
   controller:
+    hostname: controller
     image: dmbrownlee/controller:latest
     build:
       context: .
@@ -11,6 +12,8 @@ services:
     volumes:
       - home:/home
       - etc_ssh:/etc/ssh
+    dns: ${DNS_IP}
+    dns_search: ${LOCAL_DOMAIN}
     networks:
       SERVER_VLAN:
         ipv4_address: ${CONTROLLER_IP}
