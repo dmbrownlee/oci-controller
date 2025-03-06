@@ -13,6 +13,7 @@ services:
       - etc_ssh:/etc/ssh
     networks:
       SERVER_VLAN:
+        ipv4_address: ${CONTROLLER_IP}
 
 networks:
   SERVER_VLAN:
