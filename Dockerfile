@@ -15,6 +15,7 @@ RUN apk add --no-cache \
     gcc \
     git \
     git-bash-completion \
+    git-doc \
     github-cli \
     github-cli-bash-completion \
     gnupg \
