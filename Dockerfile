@@ -1,6 +1,5 @@
-# Defaults to version 3.21.3 as of 20250226
-#ARG alpine_version=:3.21.3
-ARG alpine_version=@sha256:a8560b36e8b8210634f77d9f7f9efd7ffa463e380b75e2e74aff4511df3ef88c
+# Defaults to version 3.22.1 as of 20250919
+ARG alpine_version=@sha256:4bcff63911fcb4448bd4fdacec207030997caf25e9bea4045fa6c8c44de311d1
 FROM alpine${alpine_version}
 
 RUN apk add --no-cache \
@@ -10,6 +9,8 @@ RUN apk add --no-cache \
     bind-tools \
     ca-certificates \
     curl \
+    diffutils \
+    file \
     fd \
     g++ \
     gcc \
@@ -40,6 +41,7 @@ RUN apk add --no-cache \
     openssh-client-default \
     openssh-keygen \
     openssh-server \
+    openssl \
     opentofu \
     py3-passlib \
     ripgrep \
@@ -47,6 +49,7 @@ RUN apk add --no-cache \
     shadow \
     sudo \
     tmux \
+    tree-sitter-lua \
     yq \
     yq-go-bash-completion
 
