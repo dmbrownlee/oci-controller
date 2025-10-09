@@ -12,21 +12,16 @@ services:
       ANSIBLE_PULL_OPTIONS: ${ANSIBLE_PULL_OPTIONS}
       ANSIBLE_PULL_VARS_FILE_URL: ${ANSIBLE_PULL_VARS_FILE_URL}
     volumes:
-      - home:/home
-      - etc_ssh:/etc/ssh
+      - ${CONTROLLER_HOME_PATH}:/home
+      - ${CONTROLLER_SSH_PATH}:/etc/ssh
+      - ${CONTROLLER_BACKUP_PATH}:/backups
     dns:
       - ${NS1_IP}
       - ${NS2_IP}
     dns_search: ${LOCAL_DOMAIN}
-    networks:
-      net1:
-        ipv4_address: ${CONTROLLER_IP}
-
-volumes:
-  home:
-  etc_ssh:
-
-networks:
-  net1:
-    external: true
-    name: ${LAN_NAME}
+    ports:
+      - name: ssh
+        host_ip: 127.0.0.1
+        published: "${CONTROLLER_HOST_PORT}"
+        protocol: tcp
+        target: 22
