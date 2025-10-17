@@ -1,0 +1,5 @@
+username: someuser
+uid: 1001
+gid: 1001
+password: password
+key: ssh-ed25519 AAAAbbbcccdddeeefff000111222333444555666777888999aaabbbcccdddeeefff0 someuser@localhost
